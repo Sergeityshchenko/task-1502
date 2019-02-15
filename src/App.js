@@ -11,7 +11,10 @@ class App extends Component {
     y: "",
     a: "0",
     b: "",
-    d: ""
+    d: "",
+    pi: "3.14",
+    area: "",
+    height: ""
   };
 
   render() {
@@ -24,11 +27,15 @@ class App extends Component {
     let b = this.state.b;
     let d = this.state.d;
 
+    const pi = this.state.pi;
+    let area = this.state.area;
+    let height = this.state.height;
+
     if (this.state.darkMode) {
       style = {
         color: "white",
         backgroundColor: "darkgrey",
-        height: "100vh"
+        height: "100%"
       };
     }
 
@@ -75,8 +82,7 @@ class App extends Component {
             this.setState({ y: +event.target.value });
           }}
         />
-
-        <h1>{(a + b) + d}</h1>
+        <h1>{a + b + d}</h1>
         <input
           type="number"
           value={this.state.a}
@@ -98,6 +104,37 @@ class App extends Component {
             this.setState({ d: +event.target.value });
           }}
         />
+        <hr />
+        <h1>Home work</h1>
+        <h1>Cylinder volume</h1>
+        <hr/>
+        
+        <p>Pi:</p>
+        <input
+          type="number"
+          value='3.14'
+          onChange={event => {
+            this.setState({ pi: +event.target.value });
+          }}
+        />
+        <p>Area:</p>
+        <input
+          type="number"
+          value={this.state.area}
+          onChange={event => {
+            this.setState({ area: +event.target.value });
+          }}
+        />
+        <p>Height:</p>
+        <input
+          type="number"
+          value={this.state.height}
+          onChange={event => {
+            this.setState({ height: +event.target.value });
+          }}
+        />
+        <h1>{pi * (area ^ 2) * height}</h1>
+        <input type="range"/>
       </div>
     );
   }
