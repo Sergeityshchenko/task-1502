@@ -14,7 +14,11 @@ class App extends Component {
     d: "",
     pi: "3.14",
     area: "",
-    height: ""
+    height: "",
+    h1: "Hello",
+    size: "",
+
+    underline: false
   };
 
   render() {
@@ -31,11 +35,20 @@ class App extends Component {
     let area = this.state.area;
     let height = this.state.height;
 
+    let h1 = this.state.h1;
+    let size = this.state.size;
+
     if (this.state.darkMode) {
       style = {
         color: "white",
         backgroundColor: "darkgrey",
         height: "100%"
+      };
+    }
+
+    if (this.state.underline) {
+      style = {
+        textDecoration: "underline"
       };
     }
 
@@ -107,12 +120,11 @@ class App extends Component {
         <hr />
         <h1>Home work</h1>
         <h1>Cylinder volume</h1>
-        <hr/>
-        
+        <hr />
         <p>Pi:</p>
         <input
           type="number"
-          value='3.14'
+          value="3.14"
           onChange={event => {
             this.setState({ pi: +event.target.value });
           }}
@@ -133,8 +145,28 @@ class App extends Component {
             this.setState({ height: +event.target.value });
           }}
         />
-        <h1>{pi * (area ^ 2) * height}</h1>
-        <input type="range"/>
+        <h1>{pi * area ** 2 * height}</h1>
+        <hr/>
+        <h1>Font-Size: 'px'</h1>
+        <br/>
+        <h1>{h1}</h1>
+        <input
+          type="range"
+          value={this.state.h1}
+          onChange={event => {
+            this.setState({ h1: event.target.value });
+          }}
+        />
+        <hr />
+        <h1>Text-Decoration: Underline</h1>
+        <br />
+        <input
+          type="checkbox"
+          onChange={event => {
+            this.setState({ underline: event.target.checked });
+          }}
+        />
+        Underline
       </div>
     );
   }
